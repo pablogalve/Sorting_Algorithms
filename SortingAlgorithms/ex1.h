@@ -42,13 +42,68 @@ void merge(uint32 *array, int begin, int mid, int end)
 
 	// Delete tmp arrays
 	// TODO
+	
+	const int n1 = mid - begin + 1;
+	int n2 = end - mid;
+
+	/* create temp arrays */
+	int L[n1], R[n2];
+
+	/* Copy data to temp arrays L[] and R[] */
+	for (i = 0; i < n1; i++)
+		L[i] = array[begin + i];
+	for (j = 0; j < n2; j++)
+		R[j] = array[mid + 1 + j];
+
+	/* Merge the temp arrays back into arr[l..r]*/
+	while (i < n1 && j < n2)
+	{
+		if (L[i] <= R[j])
+		{
+			array[k] = L[i];
+			i++;
+		}
+		else
+		{
+			array[k] = R[j];
+			j++;
+		}
+		k++;
+	}
+
+	/* Copy the remaining elements of L[], if there
+	   are any */
+	while (i < n1)
+	{
+		array[k] = L[i];
+		i++;
+		k++;
+	}
+
+	/* Copy the remaining elements of R[], if there
+	   are any */
+	while (j < n2)
+	{
+		array[k] = R[j];
+		j++;
+		k++;
+	}
 }
 
 void mergesort(uint32 *array, int begin, int end)
 {
+	if (begin < end)
+	{
+		// Same as (l+r)/2, but avoids overflow for 
+		// large l and h 
+		int m = begin + (end - begin) / 2;
 
-	// TODO: Insert your code here
+		// Sort first and second halves 
+		mergesort(array, begin, m);
+		mergesort(array, m + 1, end);
 
+		merge(array, begin, m, end);
+	}
 }
 
 void swap(uint32 *array, uint32 *array2) {
