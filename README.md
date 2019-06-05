@@ -2,11 +2,6 @@
 
 We have an [int] array visually represented in this pixel table.
 
-```
-Black Pixel = 0;
-White Pixel = 1;
-```
-
 It can be sorted by three different methods: bubblesort, mergesort and quicksort.
 
 Controls:
@@ -25,4 +20,9 @@ M: Mergesort
 ## Sorted array
 <p align="left">
   <img src="Screenshots/sorted.PNG" width="350" title="Circles">  
+</p>
+
+## Sorted array 2
+<p align="left">
+  <img src="Screenshots/sorted2.PNG" width="350" title="Circles">  
 </p>
