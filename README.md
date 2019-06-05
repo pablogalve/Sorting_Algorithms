@@ -1,5 +1,10 @@
 # Sorting_Algorithms
 
+We have an [int] array visually represented in this pixel table.
+
+Black Pixel = 0;
+White Pixel = 1;
+
 ## Unsorted array
 <p align="left">
   <img src="Screenshots/unsorted.PNG" width="350" title="Circles">  
