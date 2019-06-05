@@ -23,13 +23,19 @@ void swap(uint32 *array, uint32 *array2) {
 
 void bubblesort(uint32 * arr, int size)
 {
-	int i, j;
-	for (i = 0; i < size - 1; i++)
-		
-		// Last i elements are already in place    
-		for (j = 0; j < size - i - 1; j++)
-			if (arr[j] > arr[j + 1])
-				swap(&arr[j], &arr[j + 1]);
+	bool swap;
+
+	do {
+		swap = false;
+		for (int i = 0; i < size-1; ++i) {
+			if (arr[i] < arr[i + 1]) {
+				int aux = arr[i];
+				arr[i] = arr[i + 1];
+				arr[i + 1] = aux;
+				swap = true;
+			}
+		}
+	} while (swap);
 }
 
 
