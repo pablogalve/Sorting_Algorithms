@@ -11,14 +11,25 @@
 #define GRID_WIDTH 100
 #define GRID_HEIGHT 100
 
+void swap(uint32 *array, uint32 *array2) {
+	uint32 *aux;
 
+	aux = array;
+	array = array2;
+	array2 = array;
+
+}
 // Bubblesort functions ////////////////////////////////////////////////
 
 void bubblesort(uint32 * array, int size)
 {
+	int i, j;
+	for (i = 0; i < size - 1; i++)
 
-	// TODO: Insert your code here
-
+		// Last i elements are already in place    
+		for (j = 0; j < size - i - 1; j++)
+			if (array[j] > array[j + 1])
+				swap(&array[j], &array[j + 1]);
 }
 
 
@@ -52,14 +63,7 @@ void mergesort(uint32 *array, int begin, int end)
 
 }
 
-void swap(uint32 *array, uint32 *array2) {
-	uint32 *aux;
 
-	aux = array;
-	array = array2;
-	array2 = array;
-
-}
 
 // Quicksort functions /////////////////////////////////////////////////
 
