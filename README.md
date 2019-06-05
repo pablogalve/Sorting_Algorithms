@@ -2,8 +2,20 @@
 
 We have an [int] array visually represented in this pixel table.
 
+```
 Black Pixel = 0;
 White Pixel = 1;
+```
+
+It can be sorted by three different methods: bubblesort, mergesort and quicksort.
+
+Controls:
+```
+Space: Randomize array.
+Q: Quicksort
+B: Bubblesort
+M: Mergesort
+```
 
 ## Unsorted array
 <p align="left">
