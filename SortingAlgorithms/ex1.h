@@ -21,15 +21,15 @@ void swap(uint32 *array, uint32 *array2) {
 }
 // Bubblesort functions ////////////////////////////////////////////////
 
-void bubblesort(uint32 * array, int size)
+void bubblesort(uint32 * arr, int size)
 {
 	int i, j;
 	for (i = 0; i < size - 1; i++)
-
+		
 		// Last i elements are already in place    
 		for (j = 0; j < size - i - 1; j++)
-			if (array[j] > array[j + 1])
-				swap(&array[j], &array[j + 1]);
+			if (arr[j] > arr[j + 1])
+				swap(&arr[j], &arr[j + 1]);
 }
 
 
@@ -88,41 +88,43 @@ void mergesort(uint32 *arr, int l, int r)
 
 // Quicksort functions /////////////////////////////////////////////////
 
-int partition(uint32 *array, int begin, int end)
-{
-	// Take the last value (for example) as the pivot
-	// Could be any other value in the array
-	uint32 pivot = array[end];
+int Partitions(uint32* vec, int idxStart, int idxEnd) {
+	int pivot = vec[idxStart]; // Posem el pivot a la primera posició
+	int left = idxStart;
+	int right = idxEnd;
 
-	// Initialize the pivot index at the beginning
-	int pivotIndex = begin-1;
-	for (int j = begin; j <= end - 1; j++) {
-		if (array[j] <= pivot) {
-			pivotIndex++;
-			swap(&array[pivotIndex], &array[j]);
+	while (left < right) {
+		// Decrementem apuntador dret
+		while (vec[right] > pivot) right--;
+
+		// Incrementem apuntador esquerra
+		while ((left < right) && (vec[left] <= pivot)) left++;
+
+		// Si left < right -> swap(vec[left], vec[right])
+		if (left < right) {
+			int aux = vec[left];
+			vec[left] = vec[right];
+			vec[right] = aux;
 		}
 	}
-	swap(&array[pivotIndex+1], &array[end]);
-	// Traversing the array:
-	// Each value we find that is less than the pivot we push
-	// it to the left (swap) and increase the pivot index
-	// TODO
 
-	// Put the pivot in its position
-	// TODO
+	// Posem el pivot a la seva nova posició (apuntador dret)
+	int aux = vec[right];
+	vec[right] = vec[idxStart];
+	vec[idxStart] = aux;
 
-	return pivotIndex+1;
+	// Retornem la posició del pivot
+	return right;
 }
 
 
 void quicksort(uint32 *array, int begin, int end)
 {
+int idxPivot;
 
-	// TODO: Insert your code here
 	if (begin < end) {
-		int pi = partition(array, begin, end);
-
-		quicksort(array, begin, pi - 1);
-		quicksort(array, pi + 1, end);
-	}
+		idxPivot = Partitions(array, begin, end);
+		quicksort(array, begin, idxPivot - 1);
+		quicksort(array, idxPivot + 1, end);
+		}
 }
